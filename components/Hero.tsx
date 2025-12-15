@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 export const Hero: React.FC = () => {
-    // Static content, no state needed
+    const roles = ['LEARNER', 'BUILDER'];
+    const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+    const [isAnimating, setIsAnimating] = useState(false);
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIsAnimating(true);
+            setTimeout(() => {
+                setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+                setIsAnimating(false);
+            }, 300);
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, [roles.length]);
 
     return (
         <>
@@ -11,7 +24,10 @@ export const Hero: React.FC = () => {
                     {/* Main Heading */}
                     <div className="w-full max-w-[90vw] mx-auto mb-4 sm:mb-6 flex flex-col items-center">
                         <h1 className="text-[7vw] font-bold uppercase leading-[0.9] display-font tracking-[-0.03em] whitespace-nowrap text-white">
-                            ASPIRING LEARNER.
+                            ASPIRING{' '}
+                            <span className={`inline-block transition-opacity duration-500 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
+                                {roles[currentRoleIndex]}.
+                            </span>
                         </h1>
                     </div>
 

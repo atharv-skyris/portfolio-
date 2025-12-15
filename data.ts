@@ -38,15 +38,16 @@ export const projects: Project[] = [
     {
         id: "03",
         title: "MIRRORS",
-        description: "Solving the 'lost file' problem. Upload media to folders and search using natural language. Built using Qdrant for vector embeddings and Node.js.",
-        tags: ["Qdrant", "Vector Embeddings", "Node.js"],
+        description: "Mirrors is a web application that helps users search and retrieve media files such as PDFs, images, videos, and audio through natural language prompting.",
+        tags: ["Qdrant", "Vector Embeddings", "Node.js" , "Express" , "EJS" , "MULTER" , "JSON File(DB)"],
         category: "best",
-        year: "2023",
-        role: "Backend Engineer",
-        githubUrl: "https://github.com",
-        about: "Mirrors allows users to search their local files using semantic meaning rather than just keywords. For example, searching 'sunset at beach' will find relevant photos even if they aren't named that way.",
+        year: "2025",
+        role: "Developer",
+        githubUrl: "https://github.com/atharv-skyris/Mirrors-official.git",
+        about: "Sometimes it becomes very difficult to find the right file among lots of videos and images. Searching for the right file can be time-consuming and frustrating. Mirrors solves this problem by allowing users to upload their media files to respective folders. When they need a file, they can simply search in natural language.",
         journey: "I wanted to learn about Vector Databases. I spent weeks understanding embeddings and how to index images efficiently. Qdrant proved to be the perfect tool for this.",
-        contribution: "Designed the indexing pipeline and search API. Handled the integration between the file system and the vector store."
+        contribution: "Designed the indexing pipeline and search API. Handled the integration between the file system and the vector store.",
+        youtubeVideoId:"ChHxEk9KhFc"
     },
     // STANDARD (Rank 5-9)
     {
