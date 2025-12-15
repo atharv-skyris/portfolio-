@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Project } from "../types";
 
 interface ProjectDetailProps {
@@ -14,6 +14,23 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const [isJourneyModalOpen, setIsJourneyModalOpen] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const journeyRef = useRef<HTMLElement>(null);
+  const MAX_JOURNEY_LENGTH = 200;
+  const journeyText = project.journey || "Data not available for this project.";
+  const isLongJourney = journeyText.length > MAX_JOURNEY_LENGTH;
+
+  useEffect(() => {
+    if (isJourneyModalOpen) {
+      journeyRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      if (modalRef.current) {
+        modalRef.current.scrollTop = 0;
+        modalRef.current.focus();
+      }
+    }
+  }, [isJourneyModalOpen]);
 
   return (
     <div className="min-h-screen pt-20 sm:pt-24 md:pt-32 px-4 sm:px-6 md:px-12 lg:px-20 pb-12 sm:pb-16 md:pb-20 animate-fade-in relative z-20">
@@ -109,12 +126,24 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
             </p>
           </section>
 
-          <section>
+          <section ref={journeyRef}>
             <h3 className="text-xl sm:text-2xl font-bold display-font mb-4 sm:mb-6 text-white border-l-4 border-gray-700 pl-3 sm:pl-4">
               THE JOURNEY
             </h3>
             <p className="text-gray-400 leading-relaxed text-sm sm:text-base md:text-lg">
-              {project.journey || "Data not available for this project."}
+              {isLongJourney ? (
+                <>
+                  {journeyText.slice(0, MAX_JOURNEY_LENGTH)}...
+                  <button
+                    onClick={() => setIsJourneyModalOpen(true)}
+                    className="ml-2 text-white underline hover:text-gray-300 text-sm font-bold"
+                  >
+                    SEE MORE
+                  </button>
+                </>
+              ) : (
+                journeyText
+              )}
             </p>
           </section>
 
@@ -164,6 +193,34 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Journey Modal */}
+      {isJourneyModalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+          onClick={() => setIsJourneyModalOpen(false)}
+        >
+          <div
+            ref={modalRef}
+            tabIndex={-1}
+            className="bg-[#111] border border-gray-800 p-6 sm:p-8 md:p-10 max-w-4xl w-full max-h-[80vh] overflow-y-auto relative animate-fade-in outline-none"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setIsJourneyModalOpen(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors"
+            >
+              ✕
+            </button>
+            <h3 className="text-2xl font-bold display-font mb-6 text-white border-l-4 border-gray-700 pl-4">
+              THE JOURNEY
+            </h3>
+            <p className="text-gray-300 leading-relaxed text-base sm:text-lg whitespace-pre-wrap">
+              {journeyText}
+            </p>
+          </div>
+        </div>
+      )}
 
       <style>{`
                 .animate-fade-in {
