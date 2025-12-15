@@ -20,22 +20,22 @@ export const Hero: React.FC = () => {
     return (
         <>
             <section id="home" className="min-h-screen flex flex-col justify-center px-4 sm:px-6 md:px-12 lg:px-20 relative pt-16 sm:pt-20">
-                <div className="overflow-hidden mb-2 sm:mb-3 md:mb-4 animate-fade-in-up">
+                <div className="overflow-hidden mb-4 sm:mb-6 md:mb-8 animate-fade-in-up">
                     <p className="text-gray-500 text-[9px] xs:text-[10px] sm:text-xs md:text-sm tracking-[0.2em] uppercase">
                         Class 12 • Systems Thinker
                     </p>
                 </div>
                 
-                <div className="w-full overflow-x-auto overflow-y-hidden">
-                    <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold uppercase leading-tight mb-4 sm:mb-6 display-font animate-slide-up whitespace-nowrap">
-                        Aspiring{' '}
-                        <span className={`text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-600 inline-block transition-opacity duration-500 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
-                            {roles[currentRoleIndex]}
-                        </span>.
+                <div className="overflow-hidden mb-6 sm:mb-8 md:mb-10">
+                    <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] font-bold uppercase leading-[0.9] display-font animate-slide-up">
+                        <div className="text-white">Aspiring</div>
+                        <div className={`text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-600 transition-opacity duration-500 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
+                            {roles[currentRoleIndex]}.
+                        </div>
                     </h1>
                 </div>
                 
-                <div className="max-w-2xl mt-3 sm:mt-4 md:mt-6 text-gray-400 text-xs sm:text-sm md:text-lg lg:text-xl leading-relaxed border-l border-white/20 pl-3 sm:pl-4 md:pl-6 animate-fade-in">
+                <div className="max-w-2xl mt-4 sm:mt-6 md:mt-8 text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed border-l border-white/20 pl-3 sm:pl-4 md:pl-6 animate-fade-in">
                     <p className="mb-3 sm:mb-4">I'm Atharv. I take things apart to understand how they work, then build something better.</p>
                     <p className="text-[10px] xs:text-xs sm:text-sm text-gray-500">Interested in AI, systems thinking, and how we interact with information. Currently working on ideas that actually solve problems.</p>
                 </div>
