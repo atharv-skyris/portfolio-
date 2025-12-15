@@ -21,22 +21,9 @@ export const projects: Project[] = [
         journey: "Started as a simple React experiment, Brainstorm evolved into a complex system using Neo4j and WebGL for visualization. The biggest hurdle was optimizing the graph rendering for large datasets.",
         contribution: "Sole developer. Built the graph rendering engine, backend API, and authentication system."
     },
-    {
-        id: "02",
-        title: "BOOKSHELF",
-        description: "Digital library management redefined. Tracks reading habits, generates insights, and creates a social ecosystem for knowledge sharing.",
-        tags: ["Full Stack", "Analytics", "Social"],
-        category: "top",
-        year: "2024",
-        role: "Architect",
-        githubUrl: "https://github.com",
-        about: "Bookshelf goes beyond simple tracking. It analyzes reading speed, genre preferences, and suggests books based on complex user compatibility algorithms.",
-        journey: JOURNEY_TEXT,
-        contribution: CONTRIBUTION_TEXT
-    },
     // BEST (Rank 3 & 4)
     {
-        id: "03",
+        id: "02",
         title: "THERAPY AI",
         description: "An AI dedicated to mental health. Users interact via speech or text. Features include session summaries and context-aware journaling where the AI retains full context of history.",
         tags: ["Speech API", "Sentiment Analysis", "Journaling"],
@@ -49,7 +36,7 @@ export const projects: Project[] = [
         contribution: "Lead backend developer. Integrated OpenAI API, Google Speech API, and built the context retention system."
     },
     {
-        id: "04",
+        id: "03",
         title: "MIRRORS",
         description: "Solving the 'lost file' problem. Upload media to folders and search using natural language. Built using Qdrant for vector embeddings and Node.js.",
         tags: ["Qdrant", "Vector Embeddings", "Node.js"],
@@ -63,7 +50,7 @@ export const projects: Project[] = [
     },
     // STANDARD (Rank 5-9)
     {
-        id: "05",
+        id: "04",
         title: "PROJECT NAYAN",
         description: "E-commerce website for a local shop. Built the backend architecture to manage orders and inventory efficiently.",
         tags: ["E-commerce", "Backend", "Real World"],
@@ -75,7 +62,7 @@ export const projects: Project[] = [
         contribution: CONTRIBUTION_TEXT
     },
     {
-        id: "06",
+        id: "05",
         title: "AIRDRIVE",
         description: "Combines chat interface and cloud storage. Originally Flask, migrated to Node.js & Express for better performance.",
         tags: ["Node.js", "Express", "Cloud"],
@@ -87,7 +74,7 @@ export const projects: Project[] = [
         contribution: "Full stack developer. Handled the migration and implemented the chat-based file retrieval logic."
     },
     {
-        id: "07",
+        id: "06",
         title: "AUTO ATTENDANCE",
         description: "Science fair project. AI detects faces and marks attendance in a database automatically to save teacher time.",
         tags: ["AI / CV", "Face Detection", "Python"],
@@ -97,6 +84,19 @@ export const projects: Project[] = [
         about: "Uses OpenCV and face_recognition libraries to identify students from a classroom camera feed and update a SQL database in real-time.",
         journey: "My first foray into Computer Vision. Tuning the model to recognize faces in poor lighting was the biggest challenge.",
         contribution: "Built the Python recognition script and database connection."
+    },
+    {
+        id: "07",
+        title: "BOOKSHELF",
+        description: "Digital library management redefined. Tracks reading habits, generates insights, and creates a social ecosystem for knowledge sharing.",
+        tags: ["Full Stack", "Analytics", "Social"],
+        category: "standard",
+        year: "2024",
+        role: "Architect",
+        githubUrl: "https://github.com",
+        about: "Bookshelf goes beyond simple tracking. It analyzes reading speed, genre preferences, and suggests books based on complex user compatibility algorithms.",
+        journey: JOURNEY_TEXT,
+        contribution: CONTRIBUTION_TEXT
     },
     {
         id: "08",
