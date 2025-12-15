@@ -50,31 +50,26 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
 
       {/* Video Section (Placeholder) */}
       <div className="w-full aspect-video bg-[#111] border border-gray-800 mb-8 sm:mb-12 flex flex-col items-center justify-center group relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         {project.youtubeVideoId ? (
-          // <iframe
-          //     className="w-full h-full"
-          //     src={`https://www.youtube.com/embed/${project.youtubeVideoId}?autoplay=1&modestbranding=1&rel=0`}
-          //     title="YouTube video player"
-          //     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          //     allowFullScreen
-          // ></iframe>
           <iframe
             className="w-full h-full"
-            src={`https://www.youtube.com/embed/${project.youtubeVideoId}?si=XDcN9JgCTrPRJlJa`}
+            src={`https://www.youtube.com/embed/${project.youtubeVideoId}`}
             title="YouTube video player"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
           ></iframe>
         ) : (
-          <div className="text-center z-10">
-            <div className="text-3xl sm:text-4xl mb-4 opacity-50">▶</div>
-            <p className="text-gray-500 font-mono text-xs sm:text-sm tracking-widest">
-              VIDEO PREVIEW COMING SOON
-            </p>
-          </div>
+          <>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            <div className="text-center z-10">
+              <div className="text-3xl sm:text-4xl mb-4 opacity-50">▶</div>
+              <p className="text-gray-500 font-mono text-xs sm:text-sm tracking-widest">
+                VIDEO PREVIEW COMING SOON
+              </p>
+            </div>
+          </>
         )}
       </div>
 
