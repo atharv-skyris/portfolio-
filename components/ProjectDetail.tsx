@@ -16,11 +16,20 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
   }, []);
 
   const [isJourneyModalOpen, setIsJourneyModalOpen] = useState(false);
+  const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
+  const aboutModalRef = useRef<HTMLDivElement>(null);
   const journeyRef = useRef<HTMLElement>(null);
+  const aboutRef = useRef<HTMLElement>(null);
+
   const MAX_JOURNEY_LENGTH = 200;
+  const MAX_ABOUT_LENGTH = 350; // Slightly longer than journey
+
   const journeyText = project.journey || "Data not available for this project.";
+  const aboutText = project.about || project.description;
+
   const isLongJourney = journeyText.length > MAX_JOURNEY_LENGTH;
+  const isLongAbout = aboutText.length > MAX_ABOUT_LENGTH;
 
   useEffect(() => {
     if (isJourneyModalOpen) {
@@ -31,6 +40,16 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
       }
     }
   }, [isJourneyModalOpen]);
+
+  useEffect(() => {
+    if (isAboutModalOpen) {
+      aboutRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      if (aboutModalRef.current) {
+        aboutModalRef.current.scrollTop = 0;
+        aboutModalRef.current.focus();
+      }
+    }
+  }, [isAboutModalOpen]);
 
   return (
     <div className="min-h-screen pt-20 sm:pt-24 md:pt-32 px-4 sm:px-6 md:px-12 lg:px-20 pb-12 sm:pb-16 md:pb-20 animate-fade-in relative z-20">
@@ -117,12 +136,24 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
       {/* Content Sections */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12 md:gap-16">
         <div className="lg:col-span-2 space-y-10 sm:space-y-12 md:space-y-16">
-          <section>
+          <section ref={aboutRef}>
             <h3 className="text-xl sm:text-2xl font-bold display-font mb-4 sm:mb-6 text-white border-l-4 border-white pl-3 sm:pl-4">
               ABOUT THE PROJECT
             </h3>
             <p className="text-gray-400 leading-relaxed text-sm sm:text-base md:text-lg">
-              {project.about || project.description}
+              {isLongAbout ? (
+                <>
+                  {aboutText.slice(0, MAX_ABOUT_LENGTH)}...
+                  <button
+                    onClick={() => setIsAboutModalOpen(true)}
+                    className="ml-2 text-white underline hover:text-gray-300 text-sm font-bold"
+                  >
+                    SEE MORE
+                  </button>
+                </>
+              ) : (
+                aboutText
+              )}
             </p>
           </section>
 
@@ -217,6 +248,34 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
             </h3>
             <p className="text-gray-300 leading-relaxed text-base sm:text-lg whitespace-pre-wrap">
               {journeyText}
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* About Modal */}
+      {isAboutModalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+          onClick={() => setIsAboutModalOpen(false)}
+        >
+          <div
+            ref={aboutModalRef}
+            tabIndex={-1}
+            className="bg-[#111] border border-gray-800 p-6 sm:p-8 md:p-10 max-w-4xl w-full max-h-[80vh] overflow-y-auto relative animate-fade-in outline-none"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setIsAboutModalOpen(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors"
+            >
+              ✕
+            </button>
+            <h3 className="text-2xl font-bold display-font mb-6 text-white border-l-4 border-white pl-4">
+              ABOUT THE PROJECT
+            </h3>
+            <p className="text-gray-300 leading-relaxed text-base sm:text-lg whitespace-pre-wrap">
+              {aboutText}
             </p>
           </div>
         </div>
