@@ -26,20 +26,22 @@ export const projects: Project[] = [
         id: "02",
         title: "THERAPY AI",
         description: "An AI dedicated to mental health. Users interact via speech or text. Features include session summaries and context-aware journaling where the AI retains full context of history.",
-        tags: ["Speech API", "Sentiment Analysis", "Journaling"],
+        tags: ["Nodejs", "Express", "MongoDB" ,  "Redis" , "Qdrant"  , "Gemini API" ,"Vector Embeddings" ,  "EJS"],
         category: "best",
         year: "2023",
         role: "Hackathon Lead",
-        githubUrl: "https://github.com",
-        about: "Therapy AI leverages large language models to provide accessible mental health support. It uses Speech-to-Text for natural interaction and sentiment analysis to track user mood over time.",
+        githubUrl: "https://github.com/atharv-skyris/therapyAi-Official.git",
+        about: "Therapy AI is a dedicated mental health companion that provides a safe, non-judgmental space where users can freely express their emotions and receive compassionate support. The AI remembers users' past conversations through a dual-memory system, allowing it to offer personalized responses tailored to their unique journey. With voice integration for natural interaction, secure note-taking capabilities, and authentication protecting user privacy, Therapy AI creates a confidential environment where users can explore their thoughts and feelings with a supportive, understanding companion available whenever they need it.",
         journey: "Built during a 36-hour hackathon. The main challenge was maintaining context over long conversations, which we solved using a vector database for long-term memory retrieval.",
-        contribution: "Lead backend developer. Integrated OpenAI API, Google Speech API, and built the context retention system."
+        contribution: `Backend & AI Logic: Developed by Atharv Mahajan. I leveraged AI tools to deepen my understanding and learning of complex backend patterns and AI integrations.
+        Frontend: Crafted by a talented collaborator/friend.
+        `
     },
     {
         id: "03",
         title: "MIRRORS",
         description: "Mirrors is a web application that helps users search and retrieve media files such as PDFs, images, videos, and audio through natural language prompting.",
-        tags: ["Qdrant", "Vector Embeddings", "Node.js" , "Express" , "EJS" , "MULTER" , "JSON File(DB)"],
+        tags: ["Qdrant", "Vector Embeddings", "Nodejs" , "Express" , "EJS" , "MULTER" , "JSON File(DB)" , "Gemini API"],
         category: "best",
         year: "2025",
         role: "Developer",
